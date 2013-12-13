@@ -1,0 +1,20 @@
+{
+  "name": "backbone-parse-sync",
+  "version": "0.0.0",
+  "authors": [
+    "ryuma.tsukano <lyumalyuma@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "~2.0.3",
+    "underscore": "~1.5.2",
+    "backbone": "~1.1.0"
+  }
+}
