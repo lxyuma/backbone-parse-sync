@@ -8,7 +8,7 @@
 <body>
     <div id="mocha"></div>
     <script src="lib/mocha/mocha.js"></script>
-    <script>mocha.setup('bdd')</script>
+    <script>mocha.setup({ui:'bdd',timeout:5000,globals:["parseHeaders"]})</script>
     <!-- assertion framework -->
     <script src="lib/chai.js"></script>
     <script>var expect = chai.expect</script>
