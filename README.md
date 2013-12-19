@@ -4,8 +4,18 @@ this is now developing.
 
 Backbone plugin for using parse.com
 
+This plugin use parse Rest API (not use javascript API).
+
 
 ## Getting Started
+
+### before using
+
+1. you must regist parse.com
+1. you must create project
+1. check your ApplicationId and RestAPIKey in your settings(url may be ```https://parse.com/apps/your-project/edit#app_keys```)
+
+All steps are very easy! Please check [parse.com](https://parse.com/)
 
 ### In the browser
 
@@ -19,24 +29,31 @@ In your web page:
 ```html
 <script src="dist/backbone-parse-sync.min.js"></script>
 <script>
-      TestModel = Backbone.Model.extend({
-        useParse: true,
-        urlRoot: "/test"
-      });
-      testObject = new TestModel();
-      testObject.set({'name': 'test'});
-      testObject.save();
+  // settings
+  window.parseHeaders = {
+    ApplicationId: "*****************************",
+    RESTAPIKey: "*****************************"
+  };
+
+  // Model
+  TestModel = Backbone.Model.extend({
+    useParse: true,
+    urlRoot: "/blogs" // this means using parse 'blogs' object
+  });
+  testObject = new TestModel();
+  testObject.set({'name': 'test'});
+  testObject.save();
+
+  // Collection
+  TestCollection = Backbone.Collection.extend({
+    useParse: true,
+    url: "/blogs",
+    model: TestModel
+  });
+  new TestCollection().fetch();
 </script>
 ```
 
-## Documentation
-_(Coming soon)_
-
-## Examples
-_(Coming soon)_
-
-## Release History
-_(Nothing yet)_
 
 ## License
 Copyright (c) 2013 ryuma.tsukano  
