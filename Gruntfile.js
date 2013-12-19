@@ -23,7 +23,8 @@ module.exports = function(grunt) {
     },
     jshint: {
       options: {
-        jshintrc: '.jshintrc'
+        jshintrc: '.jshintrc',
+        force: true,
       },
       gruntfile: {
         src: 'Gruntfile.js'
