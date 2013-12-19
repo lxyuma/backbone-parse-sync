@@ -2,7 +2,7 @@
 
 Backbone plugin for using [parse.com](http://parse.com)
 
-This plugin use parse Rest API (not use javascript API).
+This plugin use parse [Rest API](https://parse.com/docs/rest) (Not use javascript API).
 
 Use for personal application or mock creation or hackason event.
 
