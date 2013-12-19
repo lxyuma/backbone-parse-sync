@@ -103,13 +103,31 @@
       });
     });
 
+    describe("fetch", function(){
+      beforeEach(function(done){
+        this.nameList = ["name1", "name2", "name3"];
+        var tests = _.map(this.nameList,function(name){
+          return new TestModel({name: name});
+        });
+        $.when(tests[0].save(), tests[1].save(), tests[2].save()).done(done());
 
-// LATEST
-//      new TestCollection().fetch({
-//        data: $.param({"order": "-updatedAt"}),
-//        success: onSuccess
-//      });
-
+      });
+      it('should get all data', function(done){
+        var testCollection = new TestCollection();
+        testCollection.once('sync', 
+          _.bind(function(testCollection){
+            var testCollectionNameList = _.pluck(testCollection.toJSON(), "name");
+            _.each(this.nameList, function(name){
+              expect(_.contains(testCollectionNameList, name)).to.be.true;
+            });
+            done();
+          }, {done: done, nameList: this.nameList})
+        );
+        testCollection.fetch({
+          data: $.param({"order": "-updatedAt"})
+        });
+      });
+    });
 
   });
 })();
